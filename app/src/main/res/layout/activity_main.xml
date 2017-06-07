@@ -5,22 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--CoordinatorLayout是一个智能的framelayout，可以让Material Design的控件智能移位，避免遮挡-->
+    <!--例如Snackbar的出现，让FloatingActionButton上移,刷新标志会下移在appbar之下，appbar可以接收滑动事件，让toolbar隐藏或出现-->
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <!--由于coordinatorlayout是一个framelayout，因此没有定位的控件都会在左上角堆积，发生覆盖遮挡的现象，传统的方法，就让recyclerview向下偏移toolbar的高度android:layout_marginTop="?attr/actionBarSize" -->
+        <!--由于在CoordinatorLayout中，也可以使用新的控件appbarlayout，会让里面的内容再父容易中置顶，让toolbar放在其中，而recyclerview不做修改的话，就反过来被appbarlayout遮挡-->
+        <!--但是appbarlayout滚动的时候，会把滚动事件通知appbarlayout，这样就可以进一步优化了-->
+        <!--让Toolbar响应滚动事件的行为app:layout_scrollFlags="scroll|enterAlways|snap"，在-->
+        <!--让recyclerview设置app:layout_behavior="@string/appbar_scrolling_view_behavior"，让appbar与scrollingview类的控件行为关联，一起滚动-->
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ToolbarPopupTheme" />
+            android:layout_height="wrap_content">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view"
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                app:popupTheme="@style/ToolbarPopupTheme" />
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </android.support.v4.widget.SwipeRefreshLayout>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"
