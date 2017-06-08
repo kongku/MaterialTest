@@ -24,11 +24,11 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    //Material Design的控件
-    //让图片圆形化的插件
-    //ListView的升级版
-    //卡片式的空间，圆角矩形
-    //图片加载器，会自动压缩图片，避免加载大图片而内存溢出
+    //design：Material Design的控件
+    //circleimageview：让图片圆形化的插件
+    //recyclerview：ListView的升级版
+    //cardview：卡片式的空间，圆角矩形
+    //glide：图片加载器，会自动压缩图片，避免加载大图片而内存溢出
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:25.3.1'

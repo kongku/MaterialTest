@@ -12,7 +12,7 @@
         android:fitsSystemWindows="true">
 
         <!--CollapsingToolbarLayout是继承framelayout，所以下面的imageview和toolbar是重叠在一起-->
-        <!--然后设置折叠后的颜色app:contentScrim="?attr/colorPrimaryDark"，测试看，当折叠后，会隐藏掉parallax的空间，并在toolbar下面加一层所设背景色的layout-->
+        <!--然后设置折叠后的颜色app:contentScrim="?attr/colorPrimaryDark"，才能跟状态栏颜色一样，测试看，当折叠后，会隐藏掉parallax的控件，并在toolbar下面加一层所设背景色的layout-->
         <!--系统默认是使用colorPrimaryDark作为状态栏颜色，但是会根据状态栏下面的颜色来变化，但是由于这里把imageview扩展到状态栏，并且把状态栏背景颜色设置为透明，当imageview被隐藏掉后，只看到colorPrimaryDark的颜色-->
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
@@ -20,13 +20,13 @@
             android:layout_height="match_parent"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
+            app:contentScrim="?attr/colorPrimaryDark"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
                 android:id="@+id/fruit_image_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"
                 android:fitsSystemWindows="true"/>

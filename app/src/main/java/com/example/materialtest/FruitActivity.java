@@ -44,8 +44,7 @@ public class FruitActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //奇怪变大了
-                Toast.makeText(v.getContext(),String.valueOf(findViewById(R.id.fruit_image_view).getMeasuredHeight()),Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(),"评论一下",Toast.LENGTH_SHORT).show();
             }
         });
     }
